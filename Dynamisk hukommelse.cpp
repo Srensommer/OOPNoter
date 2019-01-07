@@ -48,6 +48,40 @@ Bog::Bog(const char * titel, int antalSider)
 	// titel ligges i titel_   Vigtigt!
 	strcpy(titel_, titel);
 }
+//Constructor Objekter af klassen skal kan indeholde en række(0 og 1)'ere. 
+// Disse opbevares i et array allokeret dynamisk via pointeren numberPtr_.
+BinaryCache::BinaryCache(int capacity)
+{
+	capacity_ = (capacity > 1 ? capacity : 1);
+	size_ = 0;
+	numberPtr_ = new int[capacity_];
+}
+//metode til indsættelse af 1/0. Ligges ind bagerst i arrayet, hvis der er plads.
+void BinaryCache::addNumber(int number)
+{
+	if (number == 0 || number == 1) {
+		//Hvis alt plads er optaget
+		if (capacity_ == size_) {
+			int *temp = numberPtr_;
+			//fordobbel capacity
+			capacity_ *= 2;
+			//lav nyt array med dobbelt capacity
+			numberPtr_ = new int[capacity_];
+
+			for (int i = 0; i < size_; i++)
+				numberPtr_[i] = temp[i];
+			//sletter temp igen
+			delete[] temp;
+		}
+		//pejer på den plads tallet skal ligges ind i
+		numberPtr_[size_++] = number;
+	}
+}
+
+
+
+
+
 
 //eksempel på metode der skal sætte alle pladser i et int array til 0.
 BitSet::BitSet(int size)

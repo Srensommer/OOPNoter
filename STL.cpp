@@ -1,3 +1,16 @@
+// Vector med navn shapeVec oprettes med plads til pointere til basisklassen Shape.
+vector<Shape *> shapeVec;
+// Pointere til 3 rectangle objekter indsættes i shapeVec
+shapeVec.push_back(new Rectangle(2, 3, 4, 5));
+shapeVec.push_back(new Rectangle(10, 11, 14, 15));
+shapeVec.push_back(new Rectangle(22, 23, 24, 25));
+//Laver en forløkke med iterator, der udskriver alle objekter ved at kalde metoden draw() for dem hver især. 
+for (vector<Shape *>::iterator i = shapeVec.begin(); i != shapeVec.end(); i++)
+{
+	(*i)->draw();
+}
+
+
 //Erklæring af et objekt af STL klassen list.Derefter ligges 3 objekter af klassen ComplexNumber deri.
 //Dette udskrives derefter med STL algoritmen copy.
 {
@@ -66,3 +79,48 @@ void Budget::print() const
 		cout << *it << endl;
 	}
 }
+
+
+
+
+
+/deque eksempel
+{
+public:
+ void addToQueue(Document *);
+ void printNextDocument();
+ void showQueue() const;
+private:
+	//Her som en attribut
+ deque<Document *> printerQueue_;
+};
+// Printer.cpp
+#include "Printer.h"
+#include <iostream>
+using namespace std;
+void Printer::addToQueue(Document * d)
+{
+	if (d->getPriority())
+	{
+		// High priority, put in front
+		printerQueue_.push_front(d);
+	}
+	else
+	{
+		printerQueue_.push_back(d);
+	}
+}
+void Printer::printNextDocument()
+{
+	if (printerQueue_.empty())
+	{
+		cout << "Print queue is empty\n\n";
+	}
+	else
+	{
+		//Sender det "forreste" til print
+		printerQueue_.front()->print();
+		//Fjerner det forreste
+		printerQueue_.pop_front();
+	}
+}

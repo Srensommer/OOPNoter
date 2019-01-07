@@ -9,3 +9,11 @@ Budget & Budget::indsaetPost(const BudgetPost & post)
 //Kaskadekaldet udføres således med et objekt prut
 Budget prut;
 prut.indsaetPost(t1).indsaetPost(t2).indsaetPost(t3).indsaetPost(t4).indsaetPost(t5);
+
+
+// Returnerer reference til objektet selv, således at addOscar() kan kaldes i kaskade
+MoviePerson& MoviePerson::addOscar()
+{
+	numberOfOscars_++;
+	return *this;
+}

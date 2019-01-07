@@ -21,6 +21,13 @@ public:
 };
 
 
+//I constructoren for en klasse der arver, skal der kaldes på hovedklassens constructor således. 
+Rectangle::Rectangle(int x, int y, int vert, int hori)
+	: Shape(x, y)//Et andet eksempel på constructoren der skal arve.OvenRecipe::OvenRecipe(string name, int workTime, int temp, int ovenTime)
+	:
+	SimpleRecipe(name, workTime), temperature_(temp), ovenTime_(ovenTime)
+{
+}
 //Husk at include .h filer der arves fra.
 //En afledt klasse kunne se således ud. Bemærk "class Kasse :public Beholder"
 //Kasse arver i eksemplet fra beholder. lav også funktioner der er virtual i baseclassen

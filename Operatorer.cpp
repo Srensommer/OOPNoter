@@ -73,6 +73,9 @@ istream & operator>>(istream & in, StraightLine & line)
 	line.setYCross(b);
 	return in;
 }
+//Indlæs data til line3 objektet vha. >> operatoren
+cin >> line3;
+
 
 
 //Equality - operatoren == som her undersøger om to objekter af klassen StraightLine er ens.Operatoren er her medlem af klassen StraightLine.

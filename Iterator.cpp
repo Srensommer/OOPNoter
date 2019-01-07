@@ -32,3 +32,28 @@ for (vector<Shape *>::const_iterator it = minVec.cbegin(); it != minVec.cend();
 	(*it)->draw();
 }
 }
+//laver loop med MoviePerson vectoren og kalder print derefter.
+for (vector<MoviePerson *>::const_iterator it = actorPtrs_.begin(); it != actorPtrs_.end(); ++it)
+{
+	cout << " ";
+	(*it)->print();
+}
+
+
+//Laver iterator seperat
+deque<Document *>::const_iterator it;
+//Bruger iterator til forloop
+for (it = printerQueue_.begin(); it != printerQueue_.end(); it++)
+{
+	const Document * dPtr = *it;
+	if (dPtr->getPriority())
+	{
+		cout << "High: ";
+	}
+	else
+	{
+		cout << "Low: ";
+	}
+	cout << dPtr->getName() << endl;
+}
+}
