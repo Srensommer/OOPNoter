@@ -16,7 +16,7 @@ protected:
 public:
 	Beholder();
 	virtual ~Beholder();
-	virtual double beregnVolumen() const = 0;
+	virtual double beregnVolumen() const = 0; //pure virtual
 	virtual void print();
 };
 

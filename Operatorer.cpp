@@ -1,4 +1,5 @@
 // Operatorer
+// overloading foregår i .h filen efter klassen.
 
 
 // Stream - operatoren << udskriver her data for objekt af klassen ComplexNumber ligesom metoden print().
@@ -10,6 +11,16 @@ ostream& operator<<(ostream& out, const ComplexNumber& number)
 	number.print();
 	return out;
 }
+// endnu et eksempel på <<, denne gang så den giver et specifikt output basseret på objekter
+// .h filen
+ostream& operator<<(ostream&, const BudgetPost&);
+// .cpp filen 
+ostream & operator<<(ostream & returDetHer, const BudgetPost & xd)
+{
+	returDetHer << xd.getTekst() << " (" << xd.getKategori() << ") " << xd.getBeloeb();
+	return returDetHer;
+}
+
 
 
 //+operatoren adderer to objekter af klassen ComplexNumber.Operatoren er her I en fri(global) udgave.
@@ -21,6 +32,16 @@ ComplexNumber operator+(const ComplexNumber& left, const ComplexNumber& right)
 	return ComplexNumber(left.getRealPart() + right.getRealPart(),
 		left.getImaginaryPart() + right.getImaginaryPart());
 }
+// Andet eksempel på en fri implementation af +operatoren. 
+// .h filen
+const Lokale operator+(const Lokale &lokale1, const Lokale &lokale2);
+// .cpp filen
+const Lokale operator+(const Lokale &lokale1, const Lokale &lokale2)
+{
+	return Lokale(lokale1.getAreal() + lokale2.getAreal());
+}
+
+
 
 
 //Input - operatoren >> som her indlæser data I et objekt af klassen StraightLine.

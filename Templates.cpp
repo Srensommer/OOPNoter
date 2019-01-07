@@ -27,3 +27,16 @@ T Plade<T>::getLaengde() const
 {
 	return laengde_;
 }
+
+
+// Eksempel på nogle templates.
+int main()
+{
+	CircularBuffer<int> buffer1(5);
+	buffer1.print();
+	CircularBuffer<Point> buffer2(20);
+	buffer2.print();
+	CircularBuffer<double> buffer3;
+	buffer3.print();
+	return 0;
+}
