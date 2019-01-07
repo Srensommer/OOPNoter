@@ -20,6 +20,23 @@ ostream & operator<<(ostream & returDetHer, const BudgetPost & xd)
 	returDetHer << xd.getTekst() << " (" << xd.getKategori() << ") " << xd.getBeloeb();
 	return returDetHer;
 }
+//Måtte ikke bruge print();
+// .h filen
+ostream & operator<<(ostream &os, const Txt &);
+// .cpp filen
+ostream & operator<<(ostream & os, const Txt & t)
+{
+	os << endl << (t.getPriority() == 1 ? "High: " : "Low: ");
+	os << t.getName() << endl << endl;
+	os << t.getText() << endl << endl;
+	return os;
+}
+
+
+
+
+
+
 
 
 

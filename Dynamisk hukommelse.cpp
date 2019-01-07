@@ -35,3 +35,30 @@ for (int i = 0; i < 2; i++)
 	cout << arr[i]->beregnHandelsVaerdi(1000) << endl;
 }
 
+
+
+
+//Constructor der allokerer dynamisk hukommelse
+Bog::Bog(const char * titel, int antalSider)
+{
+	// antalSider initialiseres as pr. usual
+	antalSider_ = (antalSider > 0 ? antalSider : 0);
+	// titel_ initialiseres med dynamisk hukommelse!
+	titel_ = new char[strlen(titel) + 1];
+	// titel ligges i titel_   Vigtigt!
+	strcpy(titel_, titel);
+}
+
+//eksempel på metode der skal sætte alle pladser i et int array til 0.
+BitSet::BitSet(int size)
+{
+	size_ = size > 0 ? size : 32;
+	//Laver int array 
+	dataPtr_ = new int[size_];
+	//løber igennem arrayet med for loop
+	for (int i = 0; i < size_; i++)
+	{
+		//Sætter alle pladserne til 0
+		dataPtr_[i] = 0;
+	}
+}

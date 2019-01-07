@@ -11,6 +11,7 @@ Lokale::Lokale(const Lokale & copyMe)
 	strcpy(type_, copyMe.type_);
 }
 
+
 // destructor
 // .h Lav virtuel hvis der er nedarvning fra denne klasse.
 public:
@@ -36,13 +37,17 @@ const Lokale & Lokale::operator=(const Lokale & copyMe)
 {
 	if (this != &copyMe)
 	{
+		// initialiserer også attributen areal_, den er ganske almindelig
 		areal_ = copyMe.areal_;
 		if (strlen(type_) != strlen(copyMe.type_))
 		{
 			delete[] type_;
 			type_ = new char[strlen(copyMe.type_) + 1];
 		}
+		// ligger den kopierede i type_
 		strcpy(type_, copyMe.type_);
 	}
 	return *this;
 }
+
+

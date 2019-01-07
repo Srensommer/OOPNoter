@@ -40,3 +40,20 @@ int main()
 	buffer3.print();
 	return 0;
 }
+
+
+// en template funktion laves
+template <typename T>
+void isInRange(const T &min, const T &max, const T &value)
+{
+	cout << value << " er" << (value >= min && value <= max ? " " : " ikke ");
+	cout << "mellem " << min << " og " << max << "." << endl;
+}
+// tester funktionen og at den kan håndterer int, double og char. 
+//bemærk at man ikke behøver skrive type!
+int main()
+{
+	isInRange(0, 10, 5);
+	isInRange<double>(0.0, 10.0, 13.5);
+	isInRange('a', 'z', 'c');
+}
