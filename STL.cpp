@@ -71,9 +71,10 @@ void Budget::printKategori(string k) const
 void Budget::print() const
 {
 	vector<BudgetPost> temp(poster_);
-	// #include <algorithm>
+	// #include <algorithm> sort sorterer fra parameter 1 til parameter 2.
 	sort(temp.begin(), temp.end());
 	cout << "budgettet har" << temp.size() << "poster" << endl;
+	//laver iterator og bruger den til at udskrive de sorterede poster.
 	for (vector<BudgetPost>::const_iterator it = temp.cbegin(); it != temp.cend(); it++)
 	{
 		cout << *it << endl;
@@ -84,7 +85,7 @@ void Budget::print() const
 
 
 
-/deque eksempel
+//deque eksempel
 {
 public:
  void addToQueue(Document *);
@@ -123,4 +124,54 @@ void Printer::printNextDocument()
 		//Fjerner det forreste
 		printerQueue_.pop_front();
 	}
-}
+}//List eksempel med iterator, bemærk at iteratoren kan erklæres inden i for-statementlist<Beholder *> liste;
+liste.push_back(&k);
+liste.push_back(&t);
+list<Beholder *>::iterator i;
+for (i = liste.begin(); i != liste.end(); i++)
+(*i)->print();
+
+
+
+
+//Vector eksempel i constructor
+// .h
+private:
+	std::vector<string> instrumenter_;
+// .cpp
+
+Musiker::Musiker(string navn, string inst1, string inst2, string inst3, string inst4)
+{
+	//navn skulle initialiseres normalt
+	navn_ = navn;
+	instrumenter_.push_back(inst1);
+	if (inst2 != "")
+		instrumenter_.push_back(inst2);
+	if (inst3 != "")
+		instrumenter_.push_back(inst3);
+	if (inst4 != "")
+		instrumenter_.push_back(inst4);
+}
+
+
+//I en anden klasse hvor musiker er en attribut
+// .h
+public:
+	void tilfoejMusiker(Musiker * m);
+private:
+	std::list<Musiker*> musikere_;
+
+// .cpp 
+	void Band::tilfoejMusiker(Musiker * m)
+	{
+		musikere_.push_back(m);
+	}
+
+// en anden metode der bruger samme list som attribut
+	void Band::print() const
+	{
+		std::cout << navn_ << std::endl;
+		std::list<Musiker*>::const_iterator i;
+		for (i = musikere_.begin(); i != musikere_.end(); i++)
+			(*i)->print();
+	}

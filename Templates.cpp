@@ -42,7 +42,7 @@ int main()
 }
 
 
-// en template funktion laves
+// en funktion der bruger templates laves
 template <typename T>
 void isInRange(const T &min, const T &max, const T &value)
 {

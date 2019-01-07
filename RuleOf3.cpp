@@ -26,8 +26,6 @@ Sekvens::Sekvens(const Sekvens & copyMe)
 // .h Lav virtuel hvis der er nedarvning fra denne klasse.
 public:
 	~Lokale();
-
-
 // .cpp sletter her dynamisk allokeret memory, det skal den!
 Lokale::~Lokale()
 {
@@ -102,4 +100,31 @@ const BitSet & BitSet::operator=(const BitSet & copyMe)
 	return *this;
 }
 
-
+//bog manglede destructor, overload assignment og copy constructor// .h filen//copy constructorBog(const Bog &copy);
+//destructor
+~Bog();
+//overload assignment
+Bog & operator=(const Bog &right);//destructor as per usualBog::~Bog()
+{
+	delete[] titel_;
+}// copyconstructorBog::Bog(const Bog & copy)
+{
+	titel_ = new char[strlen(copy.titel_) + 1];
+	strcpy(titel_, copy.titel_);
+	antalSider_ = copy.antalSider_;
+}
+// Overload assignment operator 
+Bog & Bog::operator=(const Bog & right)
+{
+	if (this != &right)
+	{
+		if (strlen(titel_) != strlen(right.titel_))
+		{
+			delete[] titel_;
+			titel_ = new char[strlen(right.titel_) + 1];
+		}
+		strcpy(titel_, right.titel_);
+		antalSider_ = right.antalSider_;
+	}
+	return *this;
+}

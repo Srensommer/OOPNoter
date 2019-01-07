@@ -92,7 +92,8 @@ bool StraightLine::operator==(const StraightLine & rightLine)
 // += operatoren. Returnerer en reference til den første af de 
 // to objekter af klassen kaede der ligges sammen.
 // h.fil
-Kaede & operator+=(const kaede1 &right);
+public:
+Kaede & operator+=(const Kaede &right);
 // .cpp fil
 Kaede & Kaede::operator+=(const Kaede &right)
 {
@@ -107,7 +108,9 @@ bool operator>(const Stang & left, const Stang & right);
 // .ccp fil
 bool operator>(const Stang & left, const Stang & right)
 {
+	//Returnere true/false alt efter om left er større end right.
 	return left.getLaengde() > right.getLaengde();
 }
+
 
 

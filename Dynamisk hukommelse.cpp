@@ -10,6 +10,12 @@ void Lokale::setType(char *type)
 	strcpy(type_, type);
 }
 
+//Typisk destructor. her for attributten titel_
+Bog::~Bog()
+{
+	delete[] titel_;
+}
+
 //I constructoren er type_ initialiseret således
 type_ = nullptr;
 
@@ -41,12 +47,13 @@ for (int i = 0; i < 2; i++)
 //Constructor der allokerer dynamisk hukommelse
 Bog::Bog(const char * titel, int antalSider)
 {
-	// antalSider initialiseres as pr. usual
-	antalSider_ = (antalSider > 0 ? antalSider : 0);
 	// titel_ initialiseres med dynamisk hukommelse!
 	titel_ = new char[strlen(titel) + 1];
 	// titel ligges i titel_   Vigtigt!
 	strcpy(titel_, titel);
+
+	// antalSider initialiseres as pr. usual
+	antalSider_ = (antalSider > 0 ? antalSider : 0);
 }
 //Constructor Objekter af klassen skal kan indeholde en række(0 og 1)'ere. 
 // Disse opbevares i et array allokeret dynamisk via pointeren numberPtr_.
